@@ -1,6 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-import * as basicLightbox from 'basiclightbox'
+
 
 
 
@@ -29,17 +29,11 @@ function createGalleryCardItems(items) {
     }).join('');
 }
 
-
-
 function onOnGalleryCardClick(event) {
     event.preventDefault();
-    console.log(event.target)
-}
+    const currentCardImage = event.target.dataset.source;
 
-// document.querySelector('button.image').onclick = () => {
-
-// 	basicLightbox.create(`
-// 		<img width="1400" height="900" src="https://placehold.it/1400x900">
-// 	`).show()
-
-// }
+    basicLightbox.create(`
+		<img width="1400" height="900" src="${currentCardImage}">
+	`).show()
+};
