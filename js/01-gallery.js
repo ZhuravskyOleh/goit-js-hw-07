@@ -9,7 +9,7 @@ const galleryMarkup = createGalleryCardItems(galleryItems);
 
 galleryContainer.insertAdjacentHTML("beforeend", galleryMarkup);
 
-galleryContainer.addEventListener('click', onOnGalleryCardClick)
+galleryContainer.addEventListener('click', handleGalleryCardClick)
 
 
 
@@ -29,11 +29,44 @@ function createGalleryCardItems(items) {
     }).join('');
 }
 
-function onOnGalleryCardClick(event) {
+// function handleGalleryCardClick(event) {
+//     event.preventDefault();
+//     if (event.target.nodeName !== "IMG") {
+//         return;
+//     }
+//     const currentCardImage = event.target.dataset.source;
+//     console.log(event.target);
+
+//     const lightBox = basicLightbox.create(`
+// 		<img width="1400" height="900" src="${currentCardImage}">
+// 	`);
+//     lightBox.show();
+//     document.addEventListener('keydown', (event) => { 
+//         // if (event.key === 'Escape') {
+//         //     lightbox.close();
+//         // }
+//         lightBox.close();
+//     });
+// };
+
+
+function handleGalleryCardClick(event) {
     event.preventDefault();
+    if (event.target.nodeName !== "IMG") {
+        return;
+    }
     const currentCardImage = event.target.dataset.source;
 
-    basicLightbox.create(`
-		<img width="1400" height="900" src="${currentCardImage}">
-	`).show()
-};
+    const lightbox = basicLightbox.create(`
+        <img width="1400" height="900" src="${currentCardImage}">
+    `);
+
+    lightbox.show();
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            lightbox.close();
+        }
+    });
+}
+
