@@ -6,7 +6,7 @@ const galleryContainer = document.querySelector('.gallery');
 const galleryMarkup = createGalleryCardItems(galleryItems);
 
 galleryContainer.insertAdjacentHTML("beforeend", galleryMarkup);
-galleryContainer.addEventListener('click', onGalleryCadrClick);
+
 
 function createGalleryCardItems(items) {
     return items.map(({ preview, original, description }) => {
@@ -17,14 +17,27 @@ function createGalleryCardItems(items) {
         </a>
         </div>`;
     }).join('');
+    
 }
 
+ var lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
 
 
-function onGalleryCadrClick(event) {
-    event.preventDefault();
 
-    var lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
-        
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
