@@ -19,23 +19,12 @@ function createGalleryCardItems(items) {
     }).join('');
 }
 
+
+
 function onGalleryCadrClick(event) {
     event.preventDefault();
-    if (event.target.nodeName !== 'IMG') {
-        return;
-    }
-    
+
     var lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
-    lightbox.open();
-
-    const handleEscButton = (event) => {
-    if (event.key === 'Escape') {
-        lightbox.close();
-        document.removeEventListener('keydown', handleEscButton);
-    }
-}
-
-    document.addEventListener('keydown', handleEscButton);
-    
+        
 }
 
