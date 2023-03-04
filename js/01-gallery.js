@@ -29,26 +29,6 @@ function createGalleryCardItems(items) {
     }).join('');
 }
 
-// function handleGalleryCardClick(event) {
-//     event.preventDefault();
-//     if (event.target.nodeName !== "IMG") {
-//         return;
-//     }
-//     const currentCardImage = event.target.dataset.source;
-//     console.log(event.target);
-
-//     const lightBox = basicLightbox.create(`
-// 		<img width="1400" height="900" src="${currentCardImage}">
-// 	`);
-//     lightBox.show();
-//     document.addEventListener('keydown', (event) => { 
-//         // if (event.key === 'Escape') {
-//         //     lightbox.close();
-//         // }
-//         lightBox.close();
-//     });
-// };
-
 
 function handleGalleryCardClick(event) {
     event.preventDefault();
@@ -63,10 +43,15 @@ function handleGalleryCardClick(event) {
 
     lightbox.show();
 
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            lightbox.close();
-        }
-    });
+    const handleEscButton = (event) => {
+    if (event.key === 'Escape') {
+        lightbox.close();
+        document.removeEventListener('keydown', handleEscButton);
+    }
 }
+
+    document.addEventListener('keydown', handleEscButton);
+}
+
+
 
